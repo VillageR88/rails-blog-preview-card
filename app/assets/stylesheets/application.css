@@ -1,8 +1,14 @@
 h1,
 h2,
-p {
+p,
+a {
   margin: 0;
   padding: 0;
+}
+
+a {
+  text-decoration: unset;
+  color: unset;
 }
 
 body {
@@ -15,12 +21,12 @@ body {
   align-items: center;
   justify-content: center;
   font-family: "Figtree", sans-serif;
+  padding: 24px;
 }
 
 body > main {
   max-width: 384px;
   width: 100%;
-  min-height: 522px;
   background-color: white;
   border-radius: 20px;
   border: 1px solid black;
@@ -30,10 +36,19 @@ body > main {
   padding: 24px;
   gap: 24px;
   box-shadow: 8px 8px 0 black;
+  transition: box-shadow 300ms;
+}
+
+body:has(main > div:nth-of-type(1) > section:nth-of-type(2) > a > h2:hover)
+  > main {
+  box-shadow: 16px 16px 0 black;
 }
 
 body > main > img:nth-of-type(1) {
+  display: flex;
   border-radius: 10px;
+  object-fit: cover;
+  min-height: 200px;
 }
 
 body > main > div:nth-of-type(1) {
@@ -69,6 +84,7 @@ body
   font-size: 14px;
   line-height: 150%;
 }
+
 body > main > div:nth-of-type(1) > section:nth-of-type(1) > p {
   font-weight: 500;
   font-size: 14px;
@@ -81,14 +97,66 @@ body > main > div:nth-of-type(1) > section:nth-of-type(2) {
   gap: 12px;
 }
 
-body > main > div:nth-of-type(1) > section:nth-of-type(2) > h2 {
+body > main > div:nth-of-type(1) > section:nth-of-type(2) > a > h2 {
   font-weight: 800;
   font-size: 24px;
   line-height: 150%;
+  transition: color 300ms;
+}
+
+body > main > div:nth-of-type(1) > section:nth-of-type(2) > a > h2:hover {
+  color: #f4d04e;
 }
 
 body > main > div:nth-of-type(1) > section:nth-of-type(2) > p {
   font-weight: 500;
   line-height: 150%;
+  font-size: 16px;
   color: #7f7f7f;
+}
+
+body > main > div:nth-of-type(2) {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+body > main > div:nth-of-type(2) > p {
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 150%;
+}
+
+@media (max-width: 640px) {
+  body > main {
+    max-width: 327px;
+  }
+  body
+    > main
+    > div:nth-of-type(1)
+    > section:nth-of-type(1)
+    > div:nth-of-type(1) {
+    height: 26px;
+  }
+
+  body
+    > main
+    > div:nth-of-type(1)
+    > section:nth-of-type(1)
+    > div:nth-of-type(1)
+    > h1 {
+    font-size: 12px;
+  }
+
+  body > main > div:nth-of-type(1) > section:nth-of-type(1) > p {
+    font-size: 12px;
+  }
+
+  body > main > div:nth-of-type(1) > section:nth-of-type(2) > a > h2 {
+    font-size: 20px;
+  }
+
+  body > main > div:nth-of-type(1) > section:nth-of-type(2) > p {
+    font-size: 14px;
+  }
 }
