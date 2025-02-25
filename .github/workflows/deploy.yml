@@ -1,0 +1,60 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+
+      - name: Install Bundler
+        run: gem install bundler
+
+      - name: Add Linux platform to Gemfile.lock
+        run: |
+          gem install bundler
+          bundle lock --add-platform x86_64-linux
+          bundle platform --ruby # Verify the platform addition
+
+      - name: Unset Gemfile.lock frozen mode
+        run: bundle config set --local frozen false
+
+      - name: Disable deployment mode
+        run: |
+          bundle config set --local deployment false
+          bundle config set --local frozen false
+
+      - name: Install dependencies
+        run: |
+          bundle install
+          gem install jekyll
+
+      - name: Verify dependencies installation
+        run: bundle check
+
+      - name: Build the site
+        run: bundle exec jekyll build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
