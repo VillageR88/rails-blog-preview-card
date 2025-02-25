@@ -1,0 +1,22 @@
+# Site settings
+title: Blog Preview Card
+description: A responsive blog preview card component
+baseurl: "/rails-blog-preview-card"
+url: "https://villager88.github.io"
+
+# Build settings
+markdown: kramdown
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - app
+  - bin
+  - config
+  - db
+  - lib
+  - log
+  - public
+  - test
+  - tmp
+  - vendor

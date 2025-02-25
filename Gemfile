@@ -1,6 +1,10 @@
 source "https://rubygems.org"
 
+# Jekyll for GitHub Pages deployment
 gem "jekyll", "~> 4.3"
+gem "webrick", "~> 1.7"  # Required for Ruby 3.0+
+
+# Rails gems below this line
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.1"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
